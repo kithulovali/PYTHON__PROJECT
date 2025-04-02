@@ -1,0 +1,9 @@
+Develop a simple expense tracker using Python, MySQL, and TKinter. The system should allow users to 
+add, view, update, and delete expense records in a MySQL database. The user interface should be 
+designed using TKinter and should have the following functionalities:
+ A main window with buttons to add, view, update, and delete expense records.
+ A form to add new expense records with fields for expense description, amount, and date.
+ A table view to display the list of expense records, including their details.
+ Buttons to update and delete expense records.
+ Filter functionality to filter expenses by date, amount, or description.
+ Proper validation to handle empty fields, invalid inputs, and duplicate expense records
