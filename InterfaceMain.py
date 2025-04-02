@@ -21,23 +21,6 @@ def open_InterfaceLogIn():
     root.destroy()
     subprocess.run(["python", "InterfaceLogIn.py"])    
 
-def load_profile_image():
-    try:
-        # Read the saved image path from the file
-        with open("profile_image.txt", "r") as file:
-            uploaded_image_path = file.read().strip()
-        
-        if uploaded_image_path:  # If the path is not empty
-            UserIcon = PhotoImage(file=uploaded_image_path)
-            Usericon = UserIcon.subsample(7, 7)
-            ProfileIcon.config(image=Usericon)  # Update the profile picture
-        else:
-            print("Profile image path is empty!")
-    except FileNotFoundError:
-        print("No profile image file found!")
-    except Exception as e:
-        print(f"Error loading image: {e}")
-
 # Create the menu bar
 menu_bar = tk.Menu(root, font=("Arial", 15))
 
@@ -63,9 +46,6 @@ display_Icon.pack(side=tk.LEFT, padx=10)
 # Profile icon (this will be updated with the uploaded image)
 ProfileIcon = tk.Label(top_frame, bg="#f0f0f0")
 ProfileIcon.pack(side=tk.RIGHT, padx=10)
-
-# Load profile image on startup
-load_profile_image()
 
 # Welcome message
 welcome = tk.Label(root, text="Welcome to your daily Expense Tracker", font=("Arial", 21), bd=10, relief="sunken", padx=20, pady=20, bg="#f0f0f0")
