@@ -35,24 +35,22 @@ root.config(menu=menu_bar)
 Tracker_icon = tk.PhotoImage(file="tracker.png")
 subsampled_icon = Tracker_icon.subsample(7, 7)
 
-# Top frame
-top_frame = tk.Frame(root, bg="#f0f0f0")
-top_frame.pack(pady=10, padx=5, fill=tk.X)
+# Frame to center elements
+center_frame = tk.Frame(root, bg="#f0f0f0")
+center_frame.pack(expand=True)
 
-# Display icon
-display_Icon = tk.Label(top_frame, image=subsampled_icon, bg="#f0f0f0")
-display_Icon.pack(side=tk.LEFT, padx=10)
+# Display icon (Centered)
+display_Icon = tk.Label(center_frame, image=subsampled_icon, bg="#f0f0f0")
+display_Icon.pack(pady=10)  # Adds space around the icon
 
-# Profile icon (this will be updated with the uploaded image)
-ProfileIcon = tk.Label(top_frame, bg="#f0f0f0")
-ProfileIcon.pack(side=tk.RIGHT, padx=10)
+# Welcome message (Centered)
+welcome = tk.Label(center_frame, text="Welcome to your daily Expense Tracker", 
+                    font=("Arial", 21), bd=10, relief="sunken", padx=20, pady=20, 
+                    bg="#f0f0f0")
+welcome.pack(pady=10)
 
-# Welcome message
-welcome = tk.Label(root, text="Welcome to your daily Expense Tracker", font=("Arial", 21), bd=10, relief="sunken", padx=20, pady=20, bg="#f0f0f0")
-welcome.pack(pady=5)
-
-# Search bar
-search_frame = tk.Frame(root, bg="#f0f0f0")
+# Search bar (Centered)
+search_frame = tk.Frame(center_frame, bg="#f0f0f0")
 search_frame.pack(pady=10)
 search_entry = tk.Entry(search_frame, width=30, font=("Arial", 14), bd=3, relief="solid", bg="#ffffff")
 search_entry.pack(side=tk.LEFT, padx=5, pady=5)
@@ -62,8 +60,8 @@ search_button = tk.Button(search_frame, text="Search", font=("Arial", 14), bg="#
 search_button.pack(side=tk.LEFT, padx=5)
 
 # Log out button
-logout_button = tk.Button(search_frame, text="Log out", font=("Arial", 14), bg="#DC3545", fg="white", command=open_InterfaceLogIn)
-logout_button.pack(padx=5)
+logout_button = tk.Button(center_frame, text="Log out", font=("Arial", 14), bg="#DC3545", fg="white", command=open_InterfaceLogIn)
+logout_button.pack(pady=10)
 
 # Run the application
 root.mainloop()
