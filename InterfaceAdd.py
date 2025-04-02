@@ -1,64 +1,31 @@
 import tkinter as tk
 from tkinter import ttk, messagebox, PhotoImage
 import subprocess
-from PIL import Image, ImageTk  # Use PIL for better image handling
 
 # Initialize the main application window
 root = tk.Tk()
 root.title("Auto-Increment Table")
 root.geometry("600x600")
 
-# File that stores the profile image path
-CONFIG_FILE = "profile_image.txt"
-
 # Functions to navigate between interfaces
 def go_back():
     root.destroy()
-    subprocess.run(["python", "interface3.py"])
+    subprocess.run(["python", "InterfaceMain.py"])
 
 def open_interface4():
     root.destroy()
-    subprocess.run(["python", "interface4.py"])
+    subprocess.run(["python", "InterfaceView.py"])
 
-def open_interface_add():
-    root.destroy()
-    subprocess.run(["python", "interface_add.py"])
-
-# Load profile image function
-def load_profile_image():
-    try:
-        with open(CONFIG_FILE, "r") as file:
-            uploaded_image_path = file.read().strip()
-
-        if uploaded_image_path:  # If a valid image path exists
-            img = Image.open(uploaded_image_path)
-            img = img.resize((80, 80))  # Resize image for better UI
-            profile_photo = ImageTk.PhotoImage(img)
-            
-            ProfileIcon.config(image=profile_photo)
-            ProfileIcon.image = profile_photo  # Keep reference to avoid garbage collection
-    except FileNotFoundError:
-        print("No profile image found.")
-    except Exception as e:
-        print(f"Error loading image: {e}")
 
 # Create the menu bar
 menu_bar = tk.Menu(root, font=("Arial", 15))
 
 file_menu = tk.Menu(menu_bar, tearoff=0, font=("Arial", 15))
-file_menu.add_command(label="Add", command=open_interface_add)
 file_menu.add_command(label="View", command=open_interface4)
 file_menu.add_command(label="Back", command=go_back)
 
 menu_bar.add_cascade(label="Menu", menu=file_menu)
 root.config(menu=menu_bar)
-
-# Profile image display
-ProfileIcon = tk.Label(root, text="Profile Image", bg="gray", width=15, height=5)
-ProfileIcon.pack(pady=10)
-
-# Load the saved profile image
-load_profile_image()
 
 # Load and display tracker icon
 try:
@@ -144,7 +111,7 @@ btn_frame.pack(pady=10)
 
 add_button = tk.Button(btn_frame, text="Add Row", command=add_row)
 update_button = tk.Button(btn_frame, text="Update Row", command=update_row)
-delete_button = tk.Button(btn_frame, text="Delete Row", fg="red")
+delete_button = tk.Button(btn_frame, text="Delete Row", fg="red", command=delete_row)  # Added the command here
 
 add_button.pack(side="left", padx=5)
 update_button.pack(side="left", padx=5)
