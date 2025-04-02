@@ -17,11 +17,8 @@ def go_back():
     subprocess.run(["python", "InterfaceMain.py"])
 
 def open_interface_add():
-   
     root.destroy()
     subprocess.run(["python", "InterfaceAdd.py"])
-
-
 
 # File menu
 file_menu = tk.Menu(menu_bar, tearoff=0, font=("Arial", 15))
@@ -34,14 +31,13 @@ root.config(menu=menu_bar)
 Tracker_icon = tk.PhotoImage(file="tracker.png")
 subsampled_icon = Tracker_icon.subsample(7, 7)
 
-# Top frame
-top_frame = tk.Frame(root, bg="#f0f0f0")
-top_frame.pack(pady=10, padx=5, fill=tk.X)
+# Create a frame to center the image
+image_frame = tk.Frame(root, bg="#f0f0f0")
+image_frame.pack(pady=20)  # Adds vertical space
 
-# Display icon
-display_Icon = tk.Label(top_frame, image=subsampled_icon, bg="#f0f0f0")
-display_Icon.pack(side=tk.LEFT, padx=10)
-
+# Display icon (Centered)
+display_Icon = tk.Label(image_frame, image=subsampled_icon, bg="#f0f0f0")
+display_Icon.pack(anchor="center")  # Centering the image
 
 # Table columns
 columns = ("ID", "Column 1", "Column 2", "Column 3", "Column 4")
