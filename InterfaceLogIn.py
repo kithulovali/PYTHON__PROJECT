@@ -15,6 +15,9 @@ subsampled_icon = Tracker_icon.subsample(7, 7)
 def open_interface_():
     root.destroy()
     subprocess.run(["python", "InterfaceMain.py"])
+def open_interface_create():
+    root.destroy()
+    subprocess.run(["python", "InterfaceNewAccount.py"])
 
 top_frame = tk.Frame(root, bg="#f0f0f0")
 top_frame.pack(pady=10, padx=5, fill=tk.X)
@@ -54,7 +57,7 @@ ButtonFrame.pack(pady=20)
 SubmitButton = tk.Button(ButtonFrame, text="Enter", font=("Arial", 14), bg="#007bff", fg="white", padx=10, pady=5, command=open_interface_)
 SubmitButton.pack(side=tk.LEFT, padx=20)
 
-CreateButton = tk.Button(ButtonFrame, text="New Account", font=("Arial", 14), bg="#28a745", fg="white", padx=10, pady=5)
+CreateButton = tk.Button(ButtonFrame, text="New Account", font=("Arial", 14), bg="#28a745", fg="white", padx=10, pady=5, command=open_interface_create)
 CreateButton.pack(side=tk.RIGHT, padx=20)
 
 # Show initial message
